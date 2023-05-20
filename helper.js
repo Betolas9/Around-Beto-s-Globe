@@ -79,7 +79,12 @@ export function initEmptyScene(sceneElements) {
         // Orbit control
         // ************************** //
         let controls = new OrbitControls(camera, renderer.domElement);
-        controls.screenSpacePanning = true;
+        controls.enabledPan = false;
+        controls.enableRotate = false;
+        controls.maxDistance = 40;
+        controls.minDistance = 25;
+        controls.maxPolarAngle = 0;
+        controls.maxAzimuthAngle = - Math.PI;
 
         // **************************************** //
         // Add the rendered image in the HTML DOM

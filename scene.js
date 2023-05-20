@@ -1,8 +1,6 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import{ initEmptyScene, render } from './helper.js'; 
-import{ loadmodules } from './modules.js';
 
 document.getElementById("loading-screen").style.visibility = "visible";
 
