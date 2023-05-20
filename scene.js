@@ -9,10 +9,10 @@ document.getElementById("loading-screen").style.visibility = "visible";
 setTimeout(function() {
     // Hide the loading screen
     document.getElementById("loading-screen").style.visibility = "hidden";
-}, 1000);
+}, 2000);
 
 // To store the scene graph, and elements usefull to rendering the scene
-const sceneElements = {
+let sceneElements = {
     sceneGraph: null,
     camera: null,
     // control: null,
@@ -38,8 +38,8 @@ document.addEventListener('keyup', onDocumentKeyUp, false);
 
 // Update render image size and camera aspect when the window is resized
 function resizeWindow(eventParam) {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
 
     sceneElements.camera.aspect = width / height;
     sceneElements.camera.updateProjectionMatrix();
@@ -92,6 +92,7 @@ function onDocumentKeyUp(event) {
     }
 }
 
+// animation variables
 let mixer;
 let idleAction;
 let runAction;
@@ -100,14 +101,6 @@ let mixer2;
 
 // Create and insert in the scene graph the models of the 3D scene
 async function load3DObjects(sceneGraph) {
-
-    /* const human = loadmodules(sceneElements);
-    const human = sceneElements.sceneGraph.getObjectByName("human");
-    human.position.x = 1; */
-
-    /* const human = await loadmodules(sceneElements); */
-    /* sceneElements.sceneGraph.getObjectByName("human");
-    human.position.set( 25, 0, 25 ); */
 
     //background color
     let background = new THREE.TextureLoader().load('./assets/sky/sky.jpg');
@@ -118,7 +111,7 @@ async function load3DObjects(sceneGraph) {
     background.offset.y = -0.4;
     sceneElements.sceneGraph.background = background;
 
-    const loader = new GLTFLoader();
+    let loader = new GLTFLoader();
 
     // Load the human model
     loader.load(
@@ -128,7 +121,7 @@ async function load3DObjects(sceneGraph) {
         function ( gltf ) {
 
             // get the mesh from the loaded model
-            const human = gltf.scene.children[0];
+            let human = gltf.scene.children[0];
 
             // set castShadow property on all child meshes
             human.traverse( function( child ) {
@@ -138,7 +131,6 @@ async function load3DObjects(sceneGraph) {
                     //child.material.color.set(0xffffff);
                 }
             });
-
 
             // do something with the mesh
             human.position.set( 25, 0, 0 );
@@ -180,7 +172,7 @@ async function load3DObjects(sceneGraph) {
     );
 
     
-    const human = sceneElements.sceneGraph.getObjectByName("human");
+    let human = sceneElements.sceneGraph.getObjectByName("human");
 
     // Load the football stadium model
     loader.load(
@@ -200,7 +192,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const stadium = gltf.scene.children[0];
+            let stadium = gltf.scene.children[0];
 
             // do something with the mesh
             stadium.position.set( 9, 0.2, -10.5 );
@@ -229,7 +221,7 @@ async function load3DObjects(sceneGraph) {
         }
     );
 
-    const stadium = sceneElements.sceneGraph.getObjectByName("stadium");
+    let stadium = sceneElements.sceneGraph.getObjectByName("stadium");
 
     // Load the montain model
     loader.load(
@@ -243,28 +235,7 @@ async function load3DObjects(sceneGraph) {
                 if ( child.isMesh ) {
                     // Set shadow property
                     child.castShadow = true;
-                    child.receiveShadow = true;
-                    /*
-                    // set roughness to 0
-                    child.material.roughness = 0;
-
-                    // set metalness to 0
-                    child.material.metalness = 0;
-
-                    // set emissive color to white and intensity to 1
-                    /* child.material.emissive.set( 0xffffff );
-                    child.material.emissiveIntensity = 0.2; */
-
-                    /* // disable flat shading
-                    child.material.flatShading = false;
-
-                    // enable smooth shading
-                    child.material.smoothShading = true;
-
-                    // set side to double
-                    child.material.side = THREE.DoubleSide;  */
-
-                            
+                    child.receiveShadow = true;      
                 }
     
             } );
@@ -317,7 +288,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const flower_pool = gltf.scene.children[0];
+            let flower_pool = gltf.scene.children[0];
 
             // do something with the mesh
             flower_pool.position.set( 12, 0.7, 13 );
@@ -364,7 +335,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const fish_pool = gltf.scene.children[0];
+            let fish_pool = gltf.scene.children[0];
 
             // do something with the mesh
             fish_pool.position.set( -15, 1, 3.4);
@@ -419,7 +390,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard = gltf.scene.children[0];
+            let billboard = gltf.scene.children[0];
 
             // do something with the mesh
             billboard.position.set( 6, 0, -17 );
@@ -474,7 +445,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard2 = gltf.scene.children[0];
+            let billboard2 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard2.position.set( 3, 0, -16 );
@@ -529,7 +500,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard3 = gltf.scene.children[0];
+            let billboard3 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard3.position.set( 0, 0, -16 );
@@ -584,7 +555,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard4 = gltf.scene.children[0];
+            let billboard4 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard4.position.set( -3, 0, -16 );
@@ -639,7 +610,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard5 = gltf.scene.children[0];
+            let billboard5 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard5.position.set( -5, 0, -18 );
@@ -696,7 +667,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard6 = gltf.scene.children[0];
+            let billboard6 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard6.position.set( 20, 0, 8 );
@@ -752,7 +723,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard7 = gltf.scene.children[0];
+            let billboard7 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard7.position.set( -4, 0, -13 );
@@ -809,7 +780,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard8 = gltf.scene.children[0];
+            let billboard8 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard8.position.set( -9, 2, 3 );
@@ -868,7 +839,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const billboard9 = gltf.scene.children[0];
+            let billboard9 = gltf.scene.children[0];
 
             // do something with the mesh
             billboard9.position.set( -2, 2, 16);
@@ -906,8 +877,6 @@ async function load3DObjects(sceneGraph) {
     contact.rotateY(-Math.PI/0.1);
     contact.name = "contact";
     sceneElements.sceneGraph.add(contact );
-    
-
 
     //load trophy model
     loader.load(
@@ -930,7 +899,7 @@ async function load3DObjects(sceneGraph) {
             } );
 
             // get the mesh from the loaded model
-            const trophy = gltf.scene.children[0];
+            let trophy = gltf.scene.children[0];
 
             // do something with the mesh
             trophy.position.set( 0, 0.63,-20 );
@@ -940,9 +909,7 @@ async function load3DObjects(sceneGraph) {
             trophy.castShadow = true;
             trophy.receiveShadow = true;
             
-
             //rotate the model
-
             trophy.name = "trophy";
             sceneElements.sceneGraph.add( trophy );
         },
@@ -973,7 +940,6 @@ async function load3DObjects(sceneGraph) {
     humanspotLight.name = "humanspotLight";
     sceneElements.sceneGraph.add( humanspotLight );
  
-    
     // add spotlight above the trophy
     let trophyspotLight = new THREE.SpotLight( 0xffffff, 4 ,10, 0.3);
     trophyspotLight.position.set( 0, 8,-24 );
@@ -989,23 +955,19 @@ async function load3DObjects(sceneGraph) {
     sceneElements.sceneGraph.add(targetObject);
     trophyspotLight.target = targetObject;
 
-
     // helper to visualize the light's position and target
     let trophyspotLightHelper = new THREE.SpotLightHelper( trophyspotLight );
     sceneElements.sceneGraph.add( trophyspotLightHelper );
 
-            
-
-
     // Create a circular sidewalk
-    const sidewalkGeometry = new THREE.RingGeometry( 24, 26, 60 );
-    const roadtexture = new THREE.TextureLoader().load('./assets/road/road2.jpg');
+    let sidewalkGeometry = new THREE.RingGeometry( 24, 26, 60 );
+    let roadtexture = new THREE.TextureLoader().load('./assets/road/road2.jpg');
     roadtexture.wrapS = THREE.RepeatWrapping;
     roadtexture.wrapT = THREE.RepeatWrapping;
     roadtexture.repeat.set( 20, 20 );
-    const sidewalkMaterial = new THREE.MeshStandardMaterial( { 
+    let sidewalkMaterial = new THREE.MeshStandardMaterial( { 
         map: roadtexture, side: THREE.DoubleSide } );
-    const sidewalk = new THREE.Mesh( sidewalkGeometry, sidewalkMaterial );
+    let sidewalk = new THREE.Mesh( sidewalkGeometry, sidewalkMaterial );
     sidewalk.position.set(0, 0.1, 0);
     sidewalk.rotateX(Math.PI/2);
     sidewalk.castShadow = true;
@@ -1013,53 +975,15 @@ async function load3DObjects(sceneGraph) {
     sidewalk.name = "sidewalk";
     sceneElements.sceneGraph.add( sidewalk );
 
-
-
-
-
-
-    // ************************** //
-    // Create a ground plane
-    // ************************** //
-    /* const planeGeometry = new THREE.PlaneGeometry(100, 100);
-    const planeMaterial = new THREE.MeshPhongMaterial({ color: 'rgb(120, 134, 107)', side: THREE.DoubleSide });
-    const planeObject = new THREE.Mesh(planeGeometry, planeMaterial);
-    sceneGraph.add(planeObject);
-
-    // Change orientation of the plane using rotation
-    planeObject.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2);
-    // Set shadow property
-    planeObject.receiveShadow = true; */
-
-
-    // ************************** //
-    // Create a Cone / montain
-    // ************************** //
-    // Cone center is at (0,0,0)
-    /* const conegeometry = new THREE.ConeGeometry( 20, 6, 15 );
-    const conematerial = new THREE.MeshPhongMaterial( {color: 0xffff00} );
-    const cone = new THREE.Mesh( conegeometry, conematerial );
-    sceneGraph.add( cone );
-    cone.name = "cone";
-
-    // Set position of the cone
-    // The base of the cone will be on the plane 
-    cone.translateY(3);
-
-    // Set shadow property
-    cone.castShadow = true;
-    cone.receiveShadow = true;
- */
-
     // ************************** //
     // Create a sphere / football
     // ************************** //
-    const sphereGeometry = new THREE.SphereGeometry(0.8, 25, 25);
-    //const sphereMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00});
-    const balltexture = new THREE.TextureLoader().load('./assets/football/footballpattern.jpg');
-    const sphereMaterial = new THREE.MeshBasicMaterial({ map: balltexture });
+    let sphereGeometry = new THREE.SphereGeometry(0.8, 25, 25);
+    //let sphereMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00});
+    let balltexture = new THREE.TextureLoader().load('./assets/football/footballpattern.jpg');
+    let sphereMaterial = new THREE.MeshBasicMaterial({ map: balltexture });
 
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    let sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     sceneGraph.add(sphere);
     sphere.position.set(17, 2, -6);
     sphere.name = "sphere";
@@ -1069,25 +993,11 @@ async function load3DObjects(sceneGraph) {
     sphere.receiveShadow = true;
 
     // ************************** //
-    // Create a house 
-    // ************************** //
-    /* const houseGeometry = new THREE.BoxGeometry(3, 3, 8);
-    const houseMaterial = new THREE.MeshPhongMaterial({ color: 0x8b4513});
-    const house = new THREE.Mesh(houseGeometry, houseMaterial);
-    sceneGraph.add(house);
-    house.position.set(11, 2, -10);
-    house.name = "house";
-    house.rotateY(Math.PI / 4);
-
-    // Set shadow property
-    house.castShadow = true; */
-
-    // ************************** //
     // Create a cylinder
     // ************************** //
-    const cylinderGeometry = new THREE.CylinderGeometry(0, 0, 0, 25, 1);
-    const cylinderMaterial = new THREE.MeshPhongMaterial({ color: 0xcd853f});
-    const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+    let cylinderGeometry = new THREE.CylinderGeometry(0, 0, 0, 25, 1);
+    let cylinderMaterial = new THREE.MeshPhongMaterial({ color: 0xcd853f});
+    let cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
     sceneGraph.add(cylinder);
     cylinder.name = "cylinder";
 
@@ -1099,16 +1009,16 @@ async function load3DObjects(sceneGraph) {
     // Set shadow property
     cylinder.castShadow = true;
 
-    const camera = sceneElements.sceneGraph.getObjectByName("camera");
+    let camera = sceneElements.sceneGraph.getObjectByName("camera");
     //helpers to rotate the objects
-    const rotacao = new THREE.Object3D();
+    let rotacao = new THREE.Object3D();
     //rotacao.add(human);
     rotacao.add(cylinder);
     rotacao.add(camera);
     rotacao.add(humanspotLight);
 
     // light above the cylinder
-    const above = sceneElements.sceneGraph.getObjectByName("above");
+    let above = sceneElements.sceneGraph.getObjectByName("above");
     above.target = cylinder;
     rotacao.add(above);
     humanspotLight.target = cylinder;
@@ -1116,7 +1026,7 @@ async function load3DObjects(sceneGraph) {
     rotacao.name = "rotacao";
     sceneGraph.add(rotacao);
 
-    const axisHelper = new THREE.AxesHelper(5); // creates an axis helper with a length of 5 units
+    let axisHelper = new THREE.AxesHelper(5); // creates an axis helper with a length of 5 units
     sceneGraph.add(axisHelper);
 
 }
@@ -1128,16 +1038,16 @@ let clock = new THREE.Clock();
 
 function computeFrame(time) {
     // Compute elapsed time since the start of the animation
-    const elapsedTime = time - startTime;
+    let elapsedTime = time - startTime;
 
     // cylinder making a circle
-    const cylinder = sceneElements.sceneGraph.getObjectByName("cylinder");
-    const rotacao = sceneElements.sceneGraph.getObjectByName("rotacao");
-    const Spotlight = sceneElements.sceneGraph.getObjectByName("Spotlight");
-    const camera = sceneElements.sceneGraph.getObjectByName("camera");
-    const above = sceneElements.sceneGraph.getObjectByName("above");
-    const sphere = sceneElements.sceneGraph.getObjectByName("sphere");
-    const human = sceneElements.sceneGraph.getObjectByName("human");
+    let cylinder = sceneElements.sceneGraph.getObjectByName("cylinder");
+    let rotacao = sceneElements.sceneGraph.getObjectByName("rotacao");
+    let Spotlight = sceneElements.sceneGraph.getObjectByName("Spotlight");
+    let camera = sceneElements.sceneGraph.getObjectByName("camera");
+    let above = sceneElements.sceneGraph.getObjectByName("above");
+    let sphere = sceneElements.sceneGraph.getObjectByName("sphere");
+    let human = sceneElements.sceneGraph.getObjectByName("human");
     
     if (human) {
         rotacao.add(human);
