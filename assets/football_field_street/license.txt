@@ -1,0 +1,11 @@
+Model Information:
+* title:	football field street
+* source:	https://sketchfab.com/3d-models/football-field-street-ba7264955ba94291b83f30e9a9b9a9d4
+* author:	uriel_desing (https://sketchfab.com/thailineolivera)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "football field street" (https://sketchfab.com/3d-models/football-field-street-ba7264955ba94291b83f30e9a9b9a9d4) by uriel_desing (https://sketchfab.com/thailineolivera) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
