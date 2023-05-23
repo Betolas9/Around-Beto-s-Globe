@@ -95,7 +95,7 @@ let mixer;
 let idleAction;
 let runAction;
 let currentAnimation = 'idle'; // Initial animation state
-let mixer2;
+/* let mixer2; */
 
 // Create and insert in the scene graph the models of the 3D scene
 async function load3DObjects(sceneGraph) {
@@ -349,11 +349,11 @@ async function load3DObjects(sceneGraph) {
             sceneElements.sceneGraph.add( fish_pool );
 
             // add animation to the fish
-            mixer2 = new THREE.AnimationMixer( fish_pool );
+       /*      mixer2 = new THREE.AnimationMixer( fish_pool );
             let clips2 = gltf.animations;
             let clip2 = THREE.AnimationClip.findByName( clips2, 'Take 001' );
             let action2 = mixer.clipAction( clip2 );
-            action2.play();
+            action2.play(); */
         },
         // called while loading is progressing
         function ( xhr ) {
@@ -809,7 +809,7 @@ async function load3DObjects(sceneGraph) {
     );
 
     let school_geometry = new THREE.PlaneGeometry(6.2, 3.3 );
-    let school_billboard = new THREE.TextureLoader().load( './assets/equipas/principal.png' );
+    let school_billboard = new THREE.TextureLoader().load( './assets/equipas/project.png' );
     let schoolmaterial = new THREE.MeshBasicMaterial( { map: school_billboard } );
     let school = new THREE.Mesh( school_geometry, schoolmaterial );
     school.position.set( -6.7, 4.5, 9.1 );
@@ -937,6 +937,7 @@ async function load3DObjects(sceneGraph) {
     humanspotLight.shadow.bias = -0.009;
     humanspotLight.name = "humanspotLight";
     sceneElements.sceneGraph.add( humanspotLight );
+    
  
     // add spotlight above the trophy
     let trophyspotLight = new THREE.SpotLight( 0xffffff, 4 ,10, 0.3);
@@ -954,9 +955,12 @@ async function load3DObjects(sceneGraph) {
     trophyspotLight.target = targetObject;
 
     // helper to visualize the light's position and target
-    let trophyspotLightHelper = new THREE.SpotLightHelper( trophyspotLight );
+    /* let trophyspotLightHelper = new THREE.SpotLightHelper( trophyspotLight );
     sceneElements.sceneGraph.add( trophyspotLightHelper );
 
+    let humanspotLightHelper = new THREE.SpotLightHelper( humanspotLight );
+    sceneElements.sceneGraph.add( humanspotLightHelper );
+ */
     // Create a circular sidewalk
     let sidewalkGeometry = new THREE.RingGeometry( 24, 26, 60 );
     let roadtexture = new THREE.TextureLoader().load('./assets/road/road2.jpg');
@@ -1023,9 +1027,6 @@ async function load3DObjects(sceneGraph) {
 
     rotacao.name = "rotacao";
     sceneGraph.add(rotacao);
-
-    let axisHelper = new THREE.AxesHelper(5); // creates an axis helper with a length of 5 units
-    sceneGraph.add(axisHelper);
 
 }
 
@@ -1119,9 +1120,9 @@ function computeFrame(time) {
         mixer.update(clock.getDelta());
     }
 
-    if (mixer2){
+/*     if (mixer2){
         mixer2.update(clock.getDelta());
-    }
+    } */
     
   
     // Rendering

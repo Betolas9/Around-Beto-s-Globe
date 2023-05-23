@@ -58,8 +58,12 @@ export function initEmptyScene(sceneElements) {
         above.shadow.mapSize.height = 2048;
         above.shadow.bias = -0.0003;
 
-        let helper3 = new THREE.CameraHelper ( spotLight.shadow.camera );
-        sceneElements.sceneGraph.add( helper3 );
+        // light helpers
+        /* let spotlightHelper = new THREE.SpotLightHelper ( spotLight );
+        sceneElements.sceneGraph.add( spotlightHelper );
+
+        let spotlightHelper2 = new THREE.SpotLightHelper ( above );
+        sceneElements.sceneGraph.add( spotlightHelper2 ); */
 
         // *********************************** //
         // Create renderer (with shadow map)
@@ -83,8 +87,6 @@ export function initEmptyScene(sceneElements) {
         controls.enableRotate = false;
         controls.maxDistance = 40;
         controls.minDistance = 25;
-        controls.maxPolarAngle = 0;
-        controls.maxAzimuthAngle = - Math.PI;
 
         // **************************************** //
         // Add the rendered image in the HTML DOM
