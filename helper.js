@@ -83,7 +83,7 @@ export function initEmptyScene(sceneElements) {
         // Orbit control
         // ************************** //
         let controls = new OrbitControls(camera, renderer.domElement);
-        controls.enabledPan = false;
+        controls.enablePan = false;
         controls.enableRotate = false;
         controls.maxDistance = 40;
         controls.minDistance = 25;

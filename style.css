@@ -22,3 +22,20 @@ body {
     font-size: 40px;
     color: #000000;
 }
+
+p {
+    line-height: 0.3;
+}
+
+#helper {
+    position: fixed;
+    bottom: 88%;
+    left: 85%;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(46, 75, 0);
+    background-color: rgba(173, 227, 131, 0.8);
+    padding: 0px 5px;
+    border-radius: 10px;
+    display: none;
+}
